@@ -1,0 +1,56 @@
+<div class="parent1">
+  <h4>Parent Component</h4>
+  <div class="form-group">
+    <label for="msgtochild">Send Message to child using @Input</label>
+    <input
+      type="text"
+      id="msgtochild"
+      class="form-control"
+      [(ngModel)]=sendToChild>
+  </div>
+  <hr>
+  <div class="form-group">
+    <label for="msgToAnother">Send Message to Another Component using Service</label>
+    <input
+      type="text"
+      id="msgToAnother"
+      class="form-control"
+      #msgAnother>
+  </div>
+  <button
+    class="btn btn-primary"
+    (click)="onMsgAnother()">Send to Another Component
+  </button>
+  <hr>
+  <div class="form-group">
+    <label for="childEventEmitter">Message from child via event emitter</label>
+    <input
+      type="text"
+      id="childEventEmitter"
+      disabled
+      class="form-control"
+      [ngModel]="msgFromChildEmitTxt">
+  </div>
+  <hr>
+  <div class="form-group">
+    <label for="childViewChild">Message from child via ViewChild</label>
+    <input
+      type="text"
+      id="childViewChild"
+      disabled
+      class="form-control"
+      [ngModel]="msgFromChildviaViewChild">
+  </div>
+  <hr>
+  <div class="form-group">
+    <label for="fromAnotherComponent">Message from Another component using Service</label>
+    <input
+      type="text"
+      id="fromAnotherComponent"
+      disabled
+      class="form-control"
+      [ngModel]="myMsg">
+  </div>
+  <hr>
+  <app-child [message]=sendToChild (toParentEmit)="msgFromChildEmit($event)"></app-child>
+</div>
